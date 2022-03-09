@@ -3,11 +3,11 @@ package function
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
-	"fmt"
 )
 
 var (
@@ -24,7 +24,7 @@ type CannedResponse struct {
 }
 
 func init() {
-	fmt.Printf("Started function process\n")	
+	fmt.Printf("Started function process\n")
 }
 
 func Handle(w http.ResponseWriter, r *http.Request) {
