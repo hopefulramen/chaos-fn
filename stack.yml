@@ -3,13 +3,18 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:8080
 functions:
-  repo-events:
-    lang: golang-http
-    handler: ./repo-events
-    image: ghcr.io/alexellis/repo-events:latest
-    secrets:
-    - webhook-secret
+  chaos-fn:
+    lang: golang-middleware
+    handler: ./chaos-fn
+    image: ghcr.io/${OWNER:-alexellis}/chaos-fn:${TAG:-latest}
+    labels:
+      com.openfaas.min.scale: 1
+      com.openfaas.max.scale: 1
+    environment:
+      write_timeout: 5m30s
+      read_timeout: 5m30s
+      exec_timeout: 5m30s
 
 configuration:
   templates:
-    - name: golang-http
+    - name: golang-middleware
