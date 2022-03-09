@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"fmt"
 )
 
 var (
@@ -20,6 +21,10 @@ type CannedResponse struct {
 	Body   string `json:"body"`
 
 	Delay Duration `json:"delay"`
+}
+
+func init() {
+	fmt.Printf("Started function process\n")	
 }
 
 func Handle(w http.ResponseWriter, r *http.Request) {
