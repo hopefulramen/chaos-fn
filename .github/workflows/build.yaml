@@ -51,3 +51,4 @@ jobs:
           --extra-tag ${{ github.sha }}
           --build-arg GO111MODULE=on
           --platforms linux/amd64
+
